@@ -1,87 +1,91 @@
-# Heart Disease Prediction — Logistic Regression
+# Heart Disease Prediction Using Logistic Regression
 
-A small Streamlit app that trains a Logistic Regression classifier using two features:
-- `trestbps` — resting blood pressure
-- `chol` — cholesterol
-- `target` — binary target (0/1)
+## Project Overview
 
-The app displays test-set accuracy, precision, recall, F1 score, a confusion matrix, an ROC curve, and an interactive sample prediction.
+This project implements a machine learning classification model using **Logistic Regression** to analyze heart disease dataset records. It uses resting blood pressure (`trestbps`) and cholesterol (`chol`) as input features to predict the target class.
 
-> **Important:** Educational project only. It is not a medical diagnostic tool.
+The project demonstrates model training, prediction, performance evaluation, and visualization using Python and popular machine learning libraries.
 
-## 1. Dataset format
+## Technologies Used
 
-Keep your dataset locally. It must be a CSV with these columns:
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
 
-```csv
-trestbps,chol,target
-120,200,0
-130,250,1
-```
+## Dataset
 
-The values above are only illustrative examples, not real clinical guidance. Upload your actual `dataset.csv` through the app.
+The project uses a CSV dataset named `dataset.csv`.
 
-## 2. Run locally
+The following columns are used:
 
-Python 3.10+ recommended.
+| Column | Description |
+|---|---|
+| `trestbps` | Resting blood pressure |
+| `chol` | Serum cholesterol |
+| `target` | Target class for classification |
+
+The model uses `trestbps` and `chol` as independent variables (`X`) and `target` as the dependent variable (`y`).
+
+## Project Workflow
+
+1. **Data Loading:** Load the dataset using Pandas.
+2. **Feature Selection:** Select resting blood pressure and cholesterol as input features.
+3. **Model Training:** Train a Logistic Regression classifier using Scikit-learn.
+4. **Prediction:** Generate predicted classes and positive-class probabilities.
+5. **Performance Evaluation:** Calculate accuracy, precision, recall, and F1 score.
+6. **Confusion Matrix:** Visualize classification results using a Seaborn heatmap.
+7. **ROC Curve:** Plot the Receiver Operating Characteristic curve to examine the model's classification performance.
+
+## Model Evaluation Metrics
+
+- **Accuracy:** Measures the proportion of correctly classified records.
+- **Precision:** Measures how many positive predictions are correct.
+- **Recall:** Measures how many actual positive cases are correctly identified.
+- **F1 Score:** Combines precision and recall into a single metric.
+- **ROC Curve:** Illustrates the relationship between the true positive rate and false positive rate at different classification thresholds.
+
+## Installation
+
+Install the required libraries:
 
 ```bash
-python -m venv .venv
+pip install pandas numpy matplotlib seaborn scikit-learn
 ```
 
-Activate the environment:
+## How to Run
 
-- Linux/macOS: `source .venv/bin/activate`
-- Windows: `.venv\\Scripts\\activate`
-
-Install packages and launch:
+1. Download or clone this repository.
+2. Place `dataset.csv` in your project directory.
+3. Update the CSV file path in the Python script if necessary.
+4. Run the script:
 
 ```bash
-pip install -r requirements.txt
-streamlit run app.py
+python heart_disease_prediction.py
 ```
 
-Streamlit will print a local URL, usually `http://localhost:8501`.
+The program prints the evaluation metrics and displays the confusion matrix and ROC curve.
 
-## 3. Upload to GitHub
+## Important Note
 
-1. Create a new **public** GitHub repository, for example `heart-disease-logistic-regression`.
-2. Extract this project ZIP.
-3. Upload `app.py`, `requirements.txt`, `.gitignore`, and `README.md` to the repository root.
-4. Do **not** upload private or sensitive data. Keep `dataset.csv` out of Git unless you have the right to share it.
+The current implementation trains and evaluates the model on the same dataset. Therefore, the reported metrics may be overly optimistic and may not represent performance on unseen data.
 
-Or use Git from this folder:
+For a more reliable evaluation, use `train_test_split()` to separate training and testing data before fitting the model.
 
-```bash
-git init
-git add app.py requirements.txt .gitignore README.md
-git commit -m "Add heart disease logistic regression Streamlit app"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/heart-disease-logistic-regression.git
-git push -u origin main
-```
+This project is intended for educational purposes only and is not a medically validated diagnostic tool.
 
-Replace `YOUR-USERNAME` with your GitHub username. If Git says the remote already exists, use `git remote set-url origin <YOUR-REPOSITORY-URL>`.
+## Future Improvements
 
-## 4. Deploy with Streamlit Community Cloud
+- Implement a train-test split.
+- Apply feature scaling.
+- Evaluate the model using cross-validation.
+- Compare Logistic Regression with other classification algorithms.
+- Add hyperparameter tuning and threshold analysis.
 
-1. Push the project to GitHub.
-2. Sign in at https://share.streamlit.io/ using GitHub.
-3. Choose **Create app** and select your repository, branch (`main`), and main file path (`app.py`).
-4. Click **Deploy**.
-5. Open the deployed app and upload your CSV.
+## Author
 
-## 5. What changed from the original script?
+Your Name
 
-- Uses a train/test split rather than evaluating on the same rows used to train the model.
-- Standardizes the two numeric features in a pipeline.
-- Handles missing/non-numeric rows and checks required columns.
-- Calculates metrics on held-out test data.
-- Uses a Streamlit interface for upload, metrics, charts, and sample predictions.
-
-## Limitations / next improvements
-
-- Only two features are used, so this is a learning baseline, not a clinically validated model.
-- A single split can produce variable results; consider cross-validation.
-- Check target meaning and label encoding in your particular dataset before interpreting predictions.
-- Add model comparison, threshold analysis, and a reproducible evaluation report as later improvements.
+GitHub: Your GitHub Profile URL
