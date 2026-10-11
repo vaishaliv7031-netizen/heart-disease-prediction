@@ -86,6 +86,6 @@ This project is intended for educational purposes only and is not a medically va
 
 ## Author
 
-Your Name
+Vaishali
 
-GitHub: Your GitHub Profile URL
+GitHub: https://github.com/vaishaliv7031-netizen/heart-disease-prediction
